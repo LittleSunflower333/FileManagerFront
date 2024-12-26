@@ -1,32 +1,57 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
+    <!-- 当当前不是登录页时显示 Navbar -->
+    <NavbarComponent v-if="!isLoginPage" />
+    <div class="container">
+      <!-- 当当前不是登录页时显示 Sidebar -->
+      <SidebarComponent v-if="!isLoginPage" />
+      <!-- 路由视图渲染页面内容 -->
+      <router-view />
+    </div>
   </div>
 </template>
 
-<style lang="scss">
+<script>
+import NavbarComponent from "./components/NavbarComponent.vue";
+import SidebarComponent from "./components/SidebarComponent.vue";
+
+export default {
+  components: {
+    NavbarComponent,
+    SidebarComponent,
+  },
+  computed: {
+    isLoginPage() {
+      // 判断当前路由路径是否为登录页，假设登录页路径是 '/login'
+      return this.$route.path === "/login" || this.$route.path === "/register";
+    },
+  },
+};
+</script>
+
+<style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* 使应用充满屏幕 */
+  width: 100%;
 }
 
-nav {
-  padding: 30px;
+.container {
+  display: flex;
+  width: 100%;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+.container > SidebarComponent {
+  width: 250px; /* 侧边栏宽度可以调整 */
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.container > router-view {
+  flex: 1; /* <router-view /> 占据剩余空间 */
+}
+
+/* 为 Navbar 设置合适的高度 */
+.NavbarComponent {
+  height: 60px; /* 可以根据需要调整高度 */
 }
 </style>

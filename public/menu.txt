@@ -1,0 +1,26 @@
+src/
+├── components/
+│   ├── DocumentList.vue           # 文档列表组件
+│   ├── DocumentEditor.vue         # 文档编辑/创建组件
+│   ├── DocumentViewer.vue         # 文档预览组件
+│   ├── UserList.vue               # 用户列表组件
+│   ├── UserEditor.vue             # 用户信息编辑组件
+│   ├── LoginForm.vue              # 登录表单组件
+│   ├── OperationLogs.vue          # 用户操作日志组件
+├── layouts/
+│   ├── DefaultLayout.vue          # 默认布局（带导航栏）
+│   ├── AuthLayout.vue             # 认证布局（登录注册页面使用）
+├── views/
+│   ├── Dashboard.vue              # 仪表盘
+│   ├── DocumentManagement.vue     # 文档管理主页面
+│   ├── UserManagement.vue         # 用户管理主页面
+│   ├── OperationLog.vue           # 操作日志查看页面
+│   ├── Login.vue                  # 登录页面
+│   ├── Register.vue               # 注册页面
+│   ├── NotFound.vue               # 404 页面
+├── router/
+│   └── index.js                   # 路由配置文件
+├── store/
+│   ├── index.js                   # Vuex 状态管理配置
+├── App.vue                        # 根组件
+├── main.js                        # 项目入口文件
